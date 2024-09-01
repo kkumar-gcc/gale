@@ -74,7 +74,7 @@ func (receiver *InstallCommand) installApiStack(ctx console.Context) error {
 	for name, stub := range stubs {
 		ctx.Info("Creating " + name)
 
-		if err := file.Create(name, receiver.populateStub(stub.Stub(), "github.com/kkumar-gcc/gale")); err != nil {
+		if err := file.Create(name, receiver.populateStub(stub.Stub(), support.GoravelModulePath)); err != nil {
 			ctx.Error(err.Error())
 			return nil
 		}
