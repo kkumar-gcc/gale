@@ -4,5 +4,5 @@ const (
 	Version           = "v1.0.0"
 	APIStack          = "api"
 	APIStackPath      = "github.com/kkumar-gcc/gale/stubs/api"
-	GoravelModulePath = "github.com/goravel/goravel"
+	GoravelModulePath = "goravel"
 )
