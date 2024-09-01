@@ -9,11 +9,11 @@ type InstallCommand struct {
 }
 
 func (receiver *InstallCommand) Signature() string {
-	return "gale:install"
+	return "install"
 }
 
 func (receiver *InstallCommand) Description() string {
-	return "Install the components of the gale package"
+	return "Install the components of the Gale package"
 }
 
 // Extend The console command extend.
