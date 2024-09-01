@@ -1,5 +1,10 @@
 package routes
 
+type AuthRoute struct{}
+
+func (r *AuthRoute) Stub() string {
+	return `package routes
+
 import (
 	"github.com/goravel/framework/facades"
 
@@ -26,4 +31,6 @@ func Auth() {
 	route.Post("/reset-password", newPasswordController.Store)
 	route.Get("/verify-email/{id}/{hash}", verifyEmailController.Store)
 	route.Post("/logout", loginController.Destroy)
+}
+`
 }

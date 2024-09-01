@@ -1,5 +1,10 @@
 package models
 
+type User struct{}
+
+func (m *User) Stub() string {
+	return `package models
+
 import (
 	"github.com/goravel/framework/database/orm"
 	"github.com/goravel/framework/support/carbon"
@@ -13,4 +18,5 @@ type User struct {
 	RememberToken   string
 	EmailVerifiedAt *carbon.DateTime
 	orm.SoftDeletes
+}`
 }

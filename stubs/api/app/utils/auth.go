@@ -1,5 +1,10 @@
 package utils
 
+type AuthUtils struct{}
+
+func (r *AuthUtils) Stub() string {
+	return `package utils
+
 import (
 	"crypto/rand"
 	"encoding/hex"
@@ -13,4 +18,5 @@ func GenerateResetToken() (string, error) {
 	}
 
 	return hex.EncodeToString(bytes), nil
+}`
 }

@@ -1,5 +1,11 @@
 package auth
 
+type PasswordController struct {
+}
+
+func (r *PasswordController) Stub() string {
+	return `package auth
+
 import (
 	"github.com/goravel/framework/contracts/http"
 
@@ -61,4 +67,6 @@ func (r *PasswordController) Store(ctx http.Context) http.Response {
 	}
 
 	return utils.NewJsonResponse().SetMessage(constants.SuccessPasswordReset).Build(ctx)
+}
+`
 }

@@ -1,5 +1,11 @@
 package auth
 
+type MailService struct {
+}
+
+func (r *MailService) Stub() string {
+	return `package auth
+
 import (
 	"github.com/goravel/framework/contracts/mail"
 	"github.com/goravel/framework/facades"
@@ -28,4 +34,5 @@ func (s *MailImpl) SendVerificationEmail(email string, id, hash string) error {
 		Subject: "Email Verification",
 		Html:    "<a href=\"http://localhost:3000/verify-email/" + id + "/" + hash + "\">Verify Email</a>",
 	}).Send()
+}`
 }

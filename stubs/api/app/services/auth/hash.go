@@ -1,5 +1,11 @@
 package auth
 
+type HashService struct {
+}
+
+func (r *HashService) Stub() string {
+	return `package auth
+
 import "github.com/goravel/framework/facades"
 
 type Hash interface {
@@ -19,4 +25,6 @@ func (s *HashImpl) Make(value string) (string, error) {
 
 func (s *HashImpl) Check(value, hash string) bool {
 	return facades.Hash().Check(value, hash)
+}
+`
 }

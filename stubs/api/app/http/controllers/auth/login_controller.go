@@ -1,5 +1,11 @@
 package auth
 
+type LoginController struct {
+}
+
+func (r *LoginController) Stub() string {
+	return `package auth
+
 import (
 	"github.com/goravel/framework/contracts/http"
 
@@ -57,4 +63,6 @@ func (r *LoginController) Destroy(ctx http.Context) http.Response {
 	}
 
 	return utils.NewJsonResponse().SetMessage(constants.SuccessLogoutSuccessful).Build(ctx)
+}
+`
 }

@@ -1,5 +1,11 @@
 package auth
 
+type RegisterController struct {
+}
+
+func (r *RegisterController) Stub() string {
+	return `package auth
+
 import (
 	"strconv"
 
@@ -72,4 +78,5 @@ func (r *RegisterController) Store(ctx http.Context) http.Response {
 	return utils.NewJsonResponse().SetMessage(constants.SuccessUserRegistered).SetData(map[string]string{
 		"token": token,
 	}).Build(ctx)
+}`
 }

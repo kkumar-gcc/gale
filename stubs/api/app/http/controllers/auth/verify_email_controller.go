@@ -1,5 +1,11 @@
 package auth
 
+type VerifyEmailController struct {
+}
+
+func (r *VerifyEmailController) Stub() string {
+	return `package auth
+
 import (
 	"github.com/goravel/framework/contracts/http"
 	"github.com/goravel/framework/support/carbon"
@@ -49,4 +55,6 @@ func (r *VerifyEmailController) Store(ctx http.Context) http.Response {
 	}
 
 	return utils.NewJsonResponse().SetMessage(constants.SuccessEmailVerified).Build(ctx)
+}
+`
 }

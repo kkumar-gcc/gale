@@ -1,3 +1,7 @@
 package support
 
-const Version string = "v1.0.0"
+const (
+	Version      = "v1.0.0"
+	APIStack     = "api"
+	APIStackPath = "github.com/kkumar-gcc/gale/stubs/api"
+)

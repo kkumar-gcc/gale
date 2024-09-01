@@ -1,5 +1,11 @@
 package constants
 
+type Message struct {
+}
+
+func (r *Message) Stub() string {
+	return `package constants
+
 // Message define a standard structure for messages.
 type Message struct {
 	Status  int
@@ -55,4 +61,5 @@ var (
 	SuccessEmailVerified = NewMessage(200, "Email verified successfully")
 
 	ErrSendingVerificationEmail = NewMessage(500, "Failed to send verification email")
-)
+)`
+}

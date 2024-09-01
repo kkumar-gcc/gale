@@ -1,5 +1,11 @@
 package auth
 
+type PasswordResetService struct {
+}
+
+func (r *PasswordResetService) Stub() string {
+	return `package auth
+
 import (
 	"errors"
 
@@ -56,4 +62,6 @@ func (s *PasswordResetImpl) FindByEmailAndToken(email, token string) (*models.Pa
 func (s *PasswordResetImpl) DestroyToken(passwordReset *models.PasswordResetToken) error {
 	_, err := facades.Orm().Query().Delete(&passwordReset)
 	return err
+}
+`
 }

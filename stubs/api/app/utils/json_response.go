@@ -1,5 +1,10 @@
 package utils
 
+type JsonResponse struct{}
+
+func (r *JsonResponse) Stub() string {
+	return `package utils
+
 import (
 	"github.com/goravel/framework/contracts/http"
 
@@ -55,4 +60,5 @@ func (builder *JsonResponseBuilder) Build(ctx http.Context) http.Response {
 	}
 
 	return ctx.Response().Status(builder.status).Json(response)
+}`
 }

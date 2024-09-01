@@ -1,5 +1,11 @@
 package auth
 
+type ForgotPasswordController struct {
+}
+
+func (r *ForgotPasswordController) Stub() string {
+	return `package auth
+
 import (
 	"github.com/goravel/framework/contracts/http"
 
@@ -43,4 +49,6 @@ func (r *ForgotPasswordController) Store(ctx http.Context) http.Response {
 	}
 
 	return utils.NewJsonResponse().SetMessage(constants.SuccessPasswordResetEmailSent).Build(ctx)
+}
+`
 }

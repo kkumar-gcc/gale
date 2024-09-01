@@ -1,13 +1,18 @@
 package auth
 
+type LoginRequest struct{}
+
+func (r *LoginRequest) Stub() string {
+	return `package auth
+
 import (
 	"github.com/goravel/framework/contracts/http"
 	"github.com/goravel/framework/contracts/validation"
 )
 
 type LoginRequest struct {
-	Email    string `json:"email"`
-	Password string `json:"password"`
+	Email    string ` + "`json:\"email\"`" + `
+	Password string ` + "`json:\"password\"`" + `
 }
 
 func (r *LoginRequest) Authorize(ctx http.Context) error {
@@ -31,4 +36,6 @@ func (r *LoginRequest) Attributes(ctx http.Context) map[string]string {
 
 func (r *LoginRequest) PrepareForValidation(ctx http.Context, data validation.Data) error {
 	return nil
+}
+`
 }

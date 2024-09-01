@@ -1,5 +1,11 @@
 package auth
 
+type UserService struct {
+}
+
+func (r *UserService) Stub() string {
+	return `package auth
+
 import (
 	"errors"
 
@@ -82,4 +88,5 @@ func (s *UserImpl) GenerateToken(ctx http.Context, user *models.User) (string, e
 		return "", errors.New("failed to generate token")
 	}
 	return token, nil
+}`
 }
