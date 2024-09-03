@@ -78,7 +78,14 @@ func (receiver *InstallCommand) installApiStack(ctx console.Context) error {
 		module = support.GoravelModulePath
 	}
 
-	kernel := apiStack.Kernel{}
+	driver := ctx.Option("driver")
+	if driver == "" {
+		driver = support.MysqlDriver
+	}
+
+	driver = str.Of(driver).Lower().String()
+
+	kernel := apiStack.NewKernel(driver)
 	stubs := kernel.Stubs()
 
 	for name, stub := range stubs {
