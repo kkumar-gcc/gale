@@ -1,6 +1,7 @@
 package commands
 
 import (
+	"slices"
 	"strings"
 
 	"github.com/goravel/framework/contracts/console"
@@ -81,6 +82,12 @@ func (receiver *InstallCommand) installApiStack(ctx console.Context) error {
 	driver := ctx.Option("driver")
 	if driver == "" {
 		driver = support.MysqlDriver
+	}
+
+	supportedDrivers := []string{support.MysqlDriver, support.PostgresDriver, support.SqliteDriver}
+	if !slices.Contains(supportedDrivers, driver) {
+		ctx.Error("Invalid driver. Supported drivers are [mysql, postgres, sqlite]")
+		return nil
 	}
 
 	driver = str.Of(driver).Lower().String()
