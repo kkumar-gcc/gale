@@ -29,6 +29,12 @@ To integrate Gale into your Goravel application, follow these steps:
         routes.Auth()
     }
     ```
+
+3. **Run Migrations**\
+    Run the following command to run the migrations required for Gale to function:
+    ```bash
+    go run . artisan migrate:fresh
+    ```
 ## License
 
 Gale is open-source software licensed under the [MIT license](LICENSE).
