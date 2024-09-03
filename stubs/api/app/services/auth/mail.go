@@ -9,6 +9,8 @@ func (r *MailService) Stub() string {
 import (
 	"github.com/goravel/framework/contracts/mail"
 	"github.com/goravel/framework/facades"
+    
+    "github.com/kkumar-gcc/gale/stubs/api/app/utils"
 )
 
 type Mail interface {
@@ -25,14 +27,15 @@ func NewMailImpl() *MailImpl {
 func (s *MailImpl) SendPasswordResetEmail(email, token string) error {
 	return facades.Mail().To([]string{email}).Content(mail.Content{
 		Subject: "Password Reset",
-		Html:    "<a href=\"http://localhost:3000/reset-password?token=" + token + "\">Reset Password</a>",
+		Html:    "<a href=\"" + utils.AppURL() + "/reset-password?token=" + token + "\">Reset Password</a>",
 	}).Send()
 }
 
 func (s *MailImpl) SendVerificationEmail(email string, id, hash string) error {
 	return facades.Mail().To([]string{email}).Content(mail.Content{
 		Subject: "Email Verification",
-		Html:    "<a href=\"http://localhost:3000/verify-email/" + id + "/" + hash + "\">Verify Email</a>",
+		Html:    "<a href=\"" + utils.AppURL() + "/verify-email/" + id + "/" + hash + "\">Verify Email</a>",
 	}).Send()
-}`
+}
+`
 }
