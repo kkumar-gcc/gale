@@ -6,6 +6,7 @@ func (r *AuthRoute) Stub() string {
 	return `package routes
 
 import (
+	"github.com/goravel/framework/contracts/route"
 	"github.com/goravel/framework/facades"
 
 	"github.com/kkumar-gcc/gale/stubs/api/app/http/controllers/auth"
@@ -13,7 +14,6 @@ import (
 )
 
 func Auth() {
-	route := facades.Route()
 	userService := authServices.NewUserImpl()
 	hashService := authServices.NewHashImpl()
 	mailService := authServices.NewMailImpl()
@@ -25,12 +25,14 @@ func Auth() {
 	forgotPasswordController := auth.NewForgotPasswordController(userService, passwordResetService, mailService)
 	verifyEmailController := auth.NewVerifyEmailController()
 
-	route.Middleware().Post("/login", loginController.Store)
-	route.Post("/register", registerController.Store)
-	route.Post("/forgot-password", forgotPasswordController.Store)
-	route.Post("/reset-password", newPasswordController.Store)
-	route.Get("/verify-email/{id}/{hash}", verifyEmailController.Store)
-	route.Post("/logout", loginController.Destroy)
+	facades.Route().Prefix("auth").Group(func(router route.Router) {
+		router.Middleware().Post("/login", loginController.Store)
+		router.Post("/register", registerController.Store)
+		router.Post("/forgot-password", forgotPasswordController.Store)
+		router.Post("/reset-password", newPasswordController.Store)
+		router.Get("/verify-email/{id}/{hash}", verifyEmailController.Store)
+		router.Post("/logout", loginController.Destroy)
+	})
 }
 `
 }
