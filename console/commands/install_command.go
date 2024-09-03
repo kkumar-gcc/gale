@@ -39,10 +39,10 @@ func (receiver *InstallCommand) Extend() command.Extend {
 				Aliases: []string{"m"},
 				Usage:   "Module name of the current project",
 			},
-			&command.BoolFlag{
-				Name:    "force",
-				Aliases: []string{"f"},
-				Usage:   "Forces install even if the directory already exists",
+			&command.StringFlag{
+				Name:    "driver",
+				Aliases: []string{"d"},
+				Usage:   "The database driver to use",
 			},
 		},
 	}
@@ -51,7 +51,6 @@ func (receiver *InstallCommand) Extend() command.Extend {
 // Handle Execute the console command.
 func (receiver *InstallCommand) Handle(ctx console.Context) (err error) {
 	stack := ctx.Option("stack")
-	//force := ctx.Option("force")
 	if stack == "" {
 		stack, err = ctx.Choice("Which stack would you like to install?", []console.Choice{
 			{"API", true, support.APIStack},
@@ -73,7 +72,7 @@ func (receiver *InstallCommand) Handle(ctx console.Context) (err error) {
 	return nil
 }
 
-func (receiver *InstallCommand) installApiStack(ctx console.Context) error {
+func (receiver *InstallCommand) installApiStack(ctx console.Context) (err error) {
 	module := ctx.Option("module")
 	if module == "" {
 		module = support.GoravelModulePath
@@ -81,7 +80,15 @@ func (receiver *InstallCommand) installApiStack(ctx console.Context) error {
 
 	driver := ctx.Option("driver")
 	if driver == "" {
-		driver = support.MysqlDriver
+		driver, err = ctx.Choice("Which stack would you like to install?", []console.Choice{
+			{"Mysql", true, support.MysqlDriver},
+			{"Postgres", false, support.PostgresDriver},
+			{"Sqlite", false, support.SqliteDriver},
+		})
+		if err != nil {
+			ctx.Error(err.Error())
+			return nil
+		}
 	}
 
 	supportedDrivers := []string{support.MysqlDriver, support.PostgresDriver, support.SqliteDriver}
