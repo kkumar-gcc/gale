@@ -21,7 +21,7 @@ To integrate Gale into your Goravel application, follow these steps:
     ```
    This command will install the necessary files and directories required for Gale to function in your Goravel application.
    
-2. **Add Authentication Routes**
+2. **Add Authentication Routes**\
    Next, you'll need to add the `Auth` function from `routes/auth.go` to your `route_service_provider.go` file. This will register the authentication routes provided by Gale:
    ```go
     func (receiver *RouteServiceProvider) Boot(app foundation.Application) {
