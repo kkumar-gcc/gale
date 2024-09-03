@@ -44,6 +44,10 @@ go run . artisan install
 gale install
 ```
 
+**Options provided by the `install` command**:
+- `--stack`: Specifies the authentication stack to install. Options: `api`.
+- `--driver`: Specifies the database driver to use. Options: `mysql`, `postgres`, `sqlite`.
+
 ## Usage
 
 To integrate Gale into your Goravel application, follow these steps:
