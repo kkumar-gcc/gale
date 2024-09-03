@@ -29,8 +29,6 @@ To integrate Gale into your Goravel application, follow these steps:
         routes.Auth()
     }
     ```
-   This will ensure that all the necessary authentication routes (e.g., login, registration, password reset) are available in your application.
-
 ## License
 
 Gale is open-source software licensed under the [MIT license](LICENSE).
