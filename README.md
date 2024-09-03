@@ -45,8 +45,8 @@ gale install
 ```
 
 **Options provided by the `install` command**:
-- `--stack`: Specifies the authentication stack to install. Options: `api`.
-- `--driver`: Specifies the database driver to use. Options: `mysql`, `postgres`, `sqlite`.
+- `--stack`: Specifies the authentication stack to install. **Options**: `api`.
+- `--driver`: Specifies the database driver to use. **Options**: `mysql`, `postgres`, `sqlite`.
 
 ## Usage
 
