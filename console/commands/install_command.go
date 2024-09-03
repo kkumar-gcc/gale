@@ -33,6 +33,11 @@ func (receiver *InstallCommand) Extend() command.Extend {
 				Aliases: []string{"s"},
 				Usage:   "The stack that should be installed",
 			},
+			&command.StringFlag{
+				Name:    "module",
+				Aliases: []string{"m"},
+				Usage:   "Module name of the current project",
+			},
 			&command.BoolFlag{
 				Name:    "force",
 				Aliases: []string{"f"},
@@ -68,6 +73,11 @@ func (receiver *InstallCommand) Handle(ctx console.Context) (err error) {
 }
 
 func (receiver *InstallCommand) installApiStack(ctx console.Context) error {
+	module := ctx.Option("module")
+	if module == "" {
+		module = support.GoravelModulePath
+	}
+
 	kernel := apiStack.Kernel{}
 	stubs := kernel.Stubs()
 
