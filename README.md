@@ -2,7 +2,13 @@
 
 Gale is an authentication addon for the Goravel framework, designed to simplify and enhance user authentication processes.
 
-## Installation
+## Version
+
+| kkumar-gcc/gale | goravel/framework |
+|-----------------|-------------------|
+| v1.0.x          | v1.14.x           |
+
+## Install
 
 ### Global Installation
 
